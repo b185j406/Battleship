@@ -10,11 +10,16 @@ class Executive
 {
 
 	public:
-		//Executive();
+		Executive();
+		~Executive();
+
 		void run();
-		//~Executive();
+		void printPlayerOneGrid();
+		void printPlayerTwoGrid();
+		void fillGrids();
 
 	private:
-
+		int** playerOneGrid;
+		int** playerTwoGrid;
 };
 #endif
