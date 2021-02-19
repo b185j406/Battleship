@@ -138,9 +138,10 @@ bool Player::validateRow(int row){
 	}while(isValid == false);
 }
 
-void Player::anchorShips(){
+void Player::anchorShips(int length){
 	std::string shipStarterCol;
 	int shipStarterRow = 0;
+	int shipLength = length;
 	std::string shipLocation;
 	std::string shipPlacement;
 
@@ -162,13 +163,18 @@ void Player::anchorShips(){
 		std::cin >> shipStarterRow;
 	}while(validateRow(shipStarterRow) == false);
 
-		std::cout << "\n\nV or H? : " << shipPlacement << "\n"; //Tester statement
-		std::cout << "Column : " << shipStarterCol << "\n";
-		std::cout << "Row : " << shipStarterRow << "\n";
 
+		//Testing Statements
+		//std::cout << "\n\nVertical or Horizontal? : " << shipPlacement << "\n";
+		//std::cout << "Column : " << shipStarterCol << "\n";
+		//std::cout << "Row : " << shipStarterRow << "\n";
 		shipLocation = shipStarterCol + intToString(shipStarterRow);
+		//std::cout << "Head location is: " << shipLocation <<"\n";
+		//std::cout << "Ship Length : " << shipLength <<"\n";
 
-		std::cout << "Head location is: " << shipLocation <<"\n";
+		Ship newShip(shipLocation, shipPlacement, shipLength);
+
+		newShip.shipDocks();
 
 	//std::cout << shipLocation << "\n";
 
