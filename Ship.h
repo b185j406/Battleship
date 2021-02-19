@@ -18,12 +18,14 @@ class Ship
 
 		bool isHit(int row, char col);
 
+		void shipDocks();
+
 	private:
 		int m_shipLength = 0;
 		int m_hullIntegrity = 0;
 		std::string m_shipHead;
 		std::string m_shipDirection;
-
+		std::string m_shipCoordinates;
 
 };
 #endif
