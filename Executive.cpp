@@ -42,10 +42,8 @@ void Executive::run(){  //runs the program
 	std::cout << "\nPlayer One's turn to place their ships!\n\n";
 	Player playerOne(shipAmount); //Creating player one
 	playerOne.showWaters();
-	for(int i = 1; i <= shipAmount; i++){
-		playerOne.anchorShips(i);
-		//anchorshipmethod(i);
-		//i++
+	for(int i = 0; i < shipAmount; i++){
+		playerOne.anchorShips(i+1);
 	}
 
 
