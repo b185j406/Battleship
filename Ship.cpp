@@ -33,3 +33,10 @@ bool Ship::isHit(int row, char col){
 //	}
 	return(true);
 }
+
+
+void Ship::shipDocks(){
+	std::cout << "\nThe head of this ship is located at : " << m_shipHead << "\n";
+	std::cout << "The orientation of this ship is : " << m_shipDirection << "\n";
+	std::cout << "The length of this ship is :" << m_shipLength << "\n";
+}
