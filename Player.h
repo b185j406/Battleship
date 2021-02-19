@@ -13,7 +13,7 @@ class Player
 
 	public:
 		Player(int ships);
-		void anchorShips();
+		void anchorShips(int length);
 		void showWaters();
 		bool validateCol(std::string column);
 		bool validateRow(int row);
