@@ -26,9 +26,35 @@ Executive::~Executive() //deconstructor
 }
 
 void Executive::run(){  //runs the program
-	printPlayerOneGrid();
-	std::cout << "\n";
-	printPlayerTwoGrid();
+	std::cout << "+-+-+-+-+-+-+-BATTLESHIP-+-+-+-+-+-+-+\n";
+
+	int shipAmount = 0;
+	std::cout << "How many ships do you want to use?\n";
+	std::cin >> shipAmount;
+
+	while(shipAmount <= 0 || shipAmount > 6 || std::cin.fail()){
+		std::cin.clear();
+		std::cin.ignore(100, '\n');
+		std::cout << "How many ships do you want to use?\n";
+		std::cin >> shipAmount;
+	}
+
+	std::cout << "\nPlayer One's turn to place their ships!\n\n";
+	Player playerOne(shipAmount); //Creating player one
+	playerOne.showWaters();
+	for(int i = 1; i <= shipAmount; i++){
+		playerOne.anchorShips(i);
+		//anchorshipmethod(i);
+		//i++
+	}
+
+
+
+
+	//OG grid at beginning of program
+	//printPlayerOneGrid();
+	//std::cout << "\n";
+	//printPlayerTwoGrid();
 }
 
 void Executive::fillGrids(){
