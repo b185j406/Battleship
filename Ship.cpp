@@ -23,7 +23,7 @@ void Ship::createArray(){
 	//The issue with createArray is that you are handed the starting position, the direction, and the length.
 	//From there, you need to infer what coordinates to add next.
 
-	//For example, I am using createArray() on a ship that has its head at A1, its direction Horizontal, and its length is 5.
+	//For example, I am using createArray() on a ship that has its head at A1, its direction Vertical, and its length is 5.
 	//This function would have been validated by the player function, so you know the directions you are going are valid.
 	//Therefore, the array would be [A1, A2, A3, A4, A5, 0] since the ship array is already 6 elements long.
 
