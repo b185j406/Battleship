@@ -194,8 +194,6 @@ void Player::anchorShips(int length){
 		std::cin >> shipPlacement;
 	}while(!std::cin.fail() && shipPlacement != "V" && shipPlacement != "v" && shipPlacement != "H" && shipPlacement != "h");
 
-	//Need to implement a check, where it executes the two following do/while statements
-	//And keeps executing them, untill a valid string is entered.
 
 	std::cout << "\nWhere would you like to place the head of the ship? \n";
 	do{
@@ -208,11 +206,8 @@ void Player::anchorShips(int length){
 		std::cin >> shipStarterRow;
 	}while(validateRow(shipStarterRow) == false);
 
-	if(validatePosition(shipStarterRow, shipStarterCol, shipPlacement, shipLength) == true){
-		shipLocation = shipStarterCol + intToString(shipStarterRow);
-		Ship newShip(shipLocation, shipPlacement, shipLength);
-	}
-	else{
+
+	while(validatePosition(shipStarterRow, shipStarterCol, shipPlacement, shipLength) != true){
 		std::cout << "\n\nInvalid Coordinates, try again.\n\n";
 		std::cout << "\nWhere would you like to place the head of the ship? \n";
 		do{
@@ -226,6 +221,11 @@ void Player::anchorShips(int length){
 		}while(validateRow(shipStarterRow) == false);
 	}
 
+	if(validatePosition(shipStarterRow, shipStarterCol, shipPlacement, shipLength) == true){
+		shipLocation = shipStarterCol + intToString(shipStarterRow);
+		Ship newShip(shipLocation, shipPlacement, shipLength);
+	}
+
 	//After the position is validated, update the playerGrid with the correct coordinates
 
 
@@ -233,8 +233,29 @@ void Player::anchorShips(int length){
 
 bool Player::validatePosition(int row, std::string col, std::string direction, int size){
 
-	//Would be similar to the ship array creater. In that it scans inputs accordingly.
-	//Would use the colToInt function to validate the spot on the array.
-	return(false);
+	bool isValid = false;
+	int colnum = colToInt(col);
+	if(direction=="H"){
+	for(int i=0;i<size;i++){
+		if((colnum+i)<=10 && playerGrid[row][colnum+i]==0{
+			isValid = true
+		}
+		else{
+			isValid = false
+		}
+	}
+}
+	if(direction=="V"){
+		for(int j=0;j<size;j++){
+			if((row+i)<=10 && playerGrid[row+i][colnum]==0{
+				isValid = true
+			}
+			else{
+				isValid = false
+			}
+		}
+	}
+
+	return(isValid);
 
 }
