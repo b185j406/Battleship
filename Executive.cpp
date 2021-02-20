@@ -26,6 +26,8 @@ Executive::~Executive() //deconstructor
 }
 
 void Executive::run(){  //runs the program
+	std::string p1coords;
+	std::string p2coords;
 	std::cout << "+-+-+-+-+-+-+-BATTLESHIP-+-+-+-+-+-+-+\n";
 
 	int shipAmount = 0;
@@ -45,6 +47,7 @@ void Executive::run(){  //runs the program
 	for(int i = 0; i < shipAmount; i++){
 		playerOne.anchorShips(i+1);
 	}
+	std::cout<<"Player One, look away!\n";
 
 	std::cout << "\nPlayer Two's turn to place their ships!\n\n";
 	Player playerTwo(shipAmount); //Creating player one
@@ -52,13 +55,27 @@ void Executive::run(){  //runs the program
 	for(int i = 0; i < shipAmount; i++){
 		playerTwo.anchorShips(i+1);
 	}
-
+	std::cout<<"Player Two, look away!\n";
 
 	//OG grid at beginning of program
-	//printPlayerOneGrid();
-	//std::cout << "\n";
-	//printPlayerTwoGrid();
-}
+	std::cout<<"Time to Begin!\n";
+	while (isWinner()!=1 || isWinner()!=2){
+		std::cout<<"Player One's Firing grid:\n";
+		printPlayerOneGrid();
+		std::cout<<"Player One's Ships:\n";
+		playerOne.showWaters();
+		std::cout<<"Player One, enter coordinates of the space you'd like to fire on.\n";
+		std::cin>>p1coords;
+		playerTwo.checkGrid(p1coords);
+		std::cout<<"Player Two's Firing grid:\n";
+		printPlayerTwoGrid();
+		std::cout<<"Player Two's Ships:\n";
+		playerTwo.showWaters();
+		std::cout<<"Player Two, enter coordinates of the space you'd like to fire on.\n";
+		std::cin>>p2coords;
+		playerOne.checkGrid(p2coords);
+		}
+	}
 
 void Executive::fillGrids(){
 	for(int i = 0; i < 10; i++){
