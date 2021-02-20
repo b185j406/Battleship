@@ -22,6 +22,12 @@ class Ship
 
 		void createArray();
 
+		int colToNum(std::string column);
+
+		std::string numToString(int num);
+
+		std::string numToCol(int colnum);
+
 	private:
 		int m_shipLength = 0;
 		int m_hullIntegrity = 0;
