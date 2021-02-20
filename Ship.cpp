@@ -109,6 +109,12 @@ void Ship::createArray(){
 	}
 }
 
+std::string* Ship::getArray(){
+	std::string* arrayptr = m_shipArray;
+	return(arrayptr);
+}
+
+
 bool Ship::isDestroyed(){
 	if(m_hullIntegrity == 0){
 		return(true);
@@ -127,7 +133,7 @@ bool Ship::isHit(int row, char col){
 		if(m_shipArray[i]=hitcoords){
 			Hit=true;
 			m_hullIntegrity--;
-			isDestroyed();
+			//isDestroyed();?
 		}
 	}
 	return(Hit);
