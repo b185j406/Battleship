@@ -46,7 +46,12 @@ void Executive::run(){  //runs the program
 		playerOne.anchorShips(i+1);
 	}
 
-
+	std::cout << "\nPlayer Two's turn to place their ships!\n\n";
+	Player playerTwo(shipAmount); //Creating player one
+	playerTwo.showWaters();
+	for(int i = 0; i < shipAmount; i++){
+		playerTwo.anchorShips(i+1);
+	}
 
 
 	//OG grid at beginning of program
