@@ -50,7 +50,22 @@ int Player::colToInt(std::string column){
 	return(0);
 }
 
-void Player::checkGrid(int shipCoords[]){
+void Player::checkGrid(std::string shipCoords){
+	char col = shipCoords.at(0);
+	char row= shipCoords.at(1);
+	int rownum = row - '0';
+	int colnum = colToInt(col);
+	std::string colstring(1,col);
+	for(int i=0;i<m_ships;i++){
+		if(shipArray[i].isHit(rownum,col)==true)
+		{
+			//print hit notif. check isDestroyed(), change values in showWaters to whatever we're using for hits
+			//check isWinner? or do that in Executive
+		}
+		else{
+			//print miss notif, change values in showWaters to misses
+		}
+	}
 
 }
 
@@ -223,16 +238,22 @@ void Player::anchorShips(int length){
 
 	if(validatePosition(shipStarterRow, shipStarterCol, shipPlacement, shipLength) == true){
 		shipLocation = shipStarterCol + intToString(shipStarterRow);
-		Ship newShip(shipLocation, shipPlacement, shipLength);
+		shipArray[shipLength]= Ship newShip(shipLocation, shipPlacement, shipLength);
 	}
 
-	//After the position is validated, update the playerGrid with the correct coordinates
-
-
+	if(shipPlacement=="V"){
+	for(int i=0;i<size;i++){
+			playerGrid[shipStarterRow+i][shipStarterCol]=size;
+		}
+	}
+	if(shipPlacement=="H"){
+	for(int i=0;i<size;i++){
+			playerGrid[shipStarterRow][shipStarterCol+i]=size;
+		}
+	}
 }
 
 bool Player::validatePosition(int row, std::string col, std::string direction, int size){
-
 	bool isValid = false;
 	int colnum = colToInt(col);
 	if(direction=="H"){
@@ -255,7 +276,5 @@ bool Player::validatePosition(int row, std::string col, std::string direction, i
 			}
 		}
 	}
-
 	return(isValid);
-
 }
