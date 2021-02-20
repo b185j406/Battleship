@@ -238,20 +238,20 @@ bool Player::validatePosition(int row, std::string col, std::string direction, i
 	if(direction=="H"){
 	for(int i=0;i<size;i++){
 		if((colnum+i)<=10 && playerGrid[row][colnum+i]==0{
-			isValid = true
+			isValid = true;
 		}
 		else{
-			isValid = false
+			isValid = false;
 		}
 	}
 }
 	if(direction=="V"){
 		for(int j=0;j<size;j++){
 			if((row+i)<=10 && playerGrid[row+i][colnum]==0{
-				isValid = true
+				isValid = true;
 			}
 			else{
-				isValid = false
+				isValid = false;
 			}
 		}
 	}
