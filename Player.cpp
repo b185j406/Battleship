@@ -16,6 +16,44 @@ Player::Player(int ships){
 	}
 }
 
+int Player::colToInt(std::string column){
+	if(column == "A" || column == "a"){
+		return(1);
+	}
+	else if(column == "B" || column == "b"){
+		return(2);
+	}
+	else if(column == "C" || column == "c"){
+		return(3);
+	}
+	else if(column == "D" || column == "d"){
+		return(4);
+	}
+	else if(column == "E" || column == "e"){
+		return(5);
+	}
+	else if(column == "F" || column == "f"){
+		return(6);
+	}
+	else if(column == "G" || column == "g"){
+		return(7);
+	}
+	else if(column == "H" || column == "h"){
+		return(8);
+	}
+	else if(column == "I" || column == "i"){
+		return(9);
+	}
+	else if(column == "J" || column == "j"){
+		return(10);
+	}
+	return(0);
+}
+
+void Player::checkGrid(int shipCoords[]){
+
+}
+
 void Player::showWaters(){
 	std::cout << "+---------------------------------------------Player Board----------------------------------------------+\n";
 	std::cout << "|\t\t\tA\tB\tC\tD\tE\tF\tG\tH\tI\tJ\t|\n";
@@ -135,7 +173,11 @@ bool Player::validateRow(int row){
 			isValid = true;
 			return(true);
 		}
+		else{
+			return(false);
+		}
 	}while(isValid == false);
+
 }
 
 void Player::anchorShips(int length){
@@ -152,6 +194,9 @@ void Player::anchorShips(int length){
 		std::cin >> shipPlacement;
 	}while(!std::cin.fail() && shipPlacement != "V" && shipPlacement != "v" && shipPlacement != "H" && shipPlacement != "h");
 
+	//Need to implement a check, where it executes the two following do/while statements
+	//And keeps executing them, untill a valid string is entered.
+
 	std::cout << "\nWhere would you like to place the head of the ship? \n";
 	do{
 		std::cout << "Please input a valid column (A - J): ";
@@ -163,25 +208,33 @@ void Player::anchorShips(int length){
 		std::cin >> shipStarterRow;
 	}while(validateRow(shipStarterRow) == false);
 
-
-		//Testing Statements
-		//std::cout << "\n\nVertical or Horizontal? : " << shipPlacement << "\n";
-		//std::cout << "Column : " << shipStarterCol << "\n";
-		//std::cout << "Row : " << shipStarterRow << "\n";
+	if(validatePosition(shipStarterRow, shipStarterCol, shipPlacement, shipLength) == true){
 		shipLocation = shipStarterCol + intToString(shipStarterRow);
-		//std::cout << "Head location is: " << shipLocation <<"\n";
-		//std::cout << "Ship Length : " << shipLength <<"\n";
-
 		Ship newShip(shipLocation, shipPlacement, shipLength);
+	}
+	else{
+		std::cout << "\n\nInvalid Coordinates, try again.\n\n";
+		std::cout << "\nWhere would you like to place the head of the ship? \n";
+		do{
+			std::cout << "Please input a valid column (A - J): ";
+			std::cin >> shipStarterCol;
+		}while(validateCol(shipStarterCol) == false);
 
-		newShip.shipDocks();
+		do{
+			std::cout << "Please input a valid row (1 - 10): ";
+			std::cin >> shipStarterRow;
+		}while(validateRow(shipStarterRow) == false);
+	}
 
-	//std::cout << shipLocation << "\n";
+	//After the position is validated, update the playerGrid with the correct coordinates
+
 
 }
 
-	//for(int i = 1; i <= ships; i++){
-		//Ship(stringstart, shipPlacement, i); //i is the length of the ship
-	//}
+bool Player::validatePosition(int row, std::string col, std::string direction, int size){
 
-//}
+	//Would be similar to the ship array creater. In that it scans inputs accordingly.
+	//Would use the colToInt function to validate the spot on the array.
+	return(false);
+
+}
