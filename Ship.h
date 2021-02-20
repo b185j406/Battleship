@@ -20,12 +20,14 @@ class Ship
 
 		void shipDocks();
 
+		void createArray();
+
 	private:
 		int m_shipLength = 0;
 		int m_hullIntegrity = 0;
 		std::string m_shipHead;
 		std::string m_shipDirection;
-		std::string m_shipCoordinates;
+		std::string m_shipArray[5]; //Max ship length is 6
 
 };
 #endif
