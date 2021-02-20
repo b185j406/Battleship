@@ -28,6 +28,8 @@ class Ship
 
 		std::string numToCol(int colnum);
 
+		std::string* getArray();
+
 	private:
 		int m_shipLength = 0;
 		int m_hullIntegrity = 0;
