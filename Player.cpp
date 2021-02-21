@@ -17,20 +17,6 @@ Player::Player(int ships)
 	}
 }
 
-Player::Player()
-{
-	m_ships = 0;
-	playerGrid = new char*[10];
-	for(int i = 0; i < 10; i++){
-		playerGrid[i] = new char[10];
-	}
-	for(int j = 0; j < 10; j++){
-		for(int k = 0; k < 10; k++){
-			playerGrid[j][k] = 'O';
-		}
-	}
-}
-
 int Player::colToInt(char column){
 	if(column == 'A' || column == 'a'){
 		return(1);
@@ -262,7 +248,7 @@ void Player::anchorShips(int length){
 
 	if(validatePosition(shipStarterRow, shipStarterCol, shipPlacement, shipLength) == true){
 		shipLocation = shipStarterCol + intToString(shipStarterRow);
-		shipArray[shipLength] = Ship newShip(shipLocation, shipPlacement, shipLength);
+		shipArray[shipLength] = ship newShip(shipLocation, shipPlacement, shipLength);
 	}
 
 	if(shipPlacement=="V"){
