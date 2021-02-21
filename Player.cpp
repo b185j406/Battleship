@@ -51,7 +51,7 @@ int Player::colToInt(char column){
 	return(0);
 }
 
-void Player::checkGrid(std::string shipCoords){
+bool Player::checkGrid(std::string shipCoords){
 	char col = shipCoords.at(0);
 	char row= shipCoords.at(1);
 	int rownum = row - '0';
@@ -62,16 +62,18 @@ void Player::checkGrid(std::string shipCoords){
 			//print hit notif. check isDestroyed(), change values in showWaters to whatever we're using for hits
 			//check isWinner? or do that in Executive
 			std::cout << "Congrats you hit!\n";
-			if(shipArray[i].isDestroyed())
-			{
-				//presumably things are done if it is destroyed, don't know what -andrew
-			}
 			playerGrid[rownum][colnum] = 'H';
+			return true;
 		}
 		else{
 			//print miss notif, change values in showWaters to misses
-			std::cout << "Sorry you missed.\n";
-			playerGrid[rownum][colnum] = 'M';
+			if(playerGrid[rownum][colnum] == 'H') {
+				std::cout << "You hit a spot already hit.\n";
+			}else {
+				std::cout << "Sorry you missed.\n";
+				playerGrid[rownum][colnum] = 'M';
+			}
+			return false;
 		}
 	}
 

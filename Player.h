@@ -84,7 +84,7 @@ class Player
 		* @param std::string shipCoords, the location of the ship
 		* @return void
 		**/
-		void checkGrid(std::string shipCoords);
+		bool checkGrid(std::string shipCoords);
 
 	private:
 		int m_ships;
