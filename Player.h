@@ -82,9 +82,16 @@ class Player
 		* @pre the player has inputted coordinates to fire upon, we need to check them
 		* @post checks if the ship has been hit, informs player
 		* @param std::string shipCoords, the location of the ship
-		* @return void
+		* @return true if hit lands, false if miss
 		**/
 		bool checkGrid(std::string shipCoords);
+		
+		/**
+		* @pre all ships have been constructed
+		* @post checks how many ships have not been destroed
+		* @return number of ships not destroyed
+		**/
+		int shipsRemaining();
 
 	private:
 		int m_ships;

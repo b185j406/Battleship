@@ -290,3 +290,13 @@ bool Player::validatePosition(int row, char col, std::string direction, int size
 	}
 	return(isValid);
 }
+
+int Player::shipsRemaining(){
+	int cnt = m_ships;
+	for(int i=0;i<m_ships;i++) {
+		if(shipArray[i].isDestroyed() ){
+			cnt--;
+		}
+	}
+	return(cnt);
+}
