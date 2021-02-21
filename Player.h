@@ -19,6 +19,13 @@ class Player
 		* @return N/A
 		**/
 		Player(int ships);
+		
+		/**
+		* @pre The class is created using a default constructor with no number of ships specified
+		* @post The class is created
+		* @return N/A
+		**/
+		Player();
 
 		/**
 		* @pre You need to turn a char column value to an int value
