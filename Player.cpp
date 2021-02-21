@@ -250,13 +250,13 @@ void Player::anchorShips(int length){
 	}
 
 	if(shipPlacement=="V"){
-	for(int i=0;i<size;i++){
-			playerGrid[shipStarterRow+i][shipStarterCol]=size;
+		for(int i=0;i<shipLength;i++){
+			playerGrid[shipStarterRow+i][shipStarterCol]='S';
 		}
 	}
 	if(shipPlacement=="H"){
-	for(int i=0;i<size;i++){
-			playerGrid[shipStarterRow][shipStarterCol+i]=size;
+		for(int i=0;i<shipLength;i++){
+				playerGrid[shipStarterRow][shipStarterCol+i]='S';
 		}
 	}
 }
@@ -265,15 +265,15 @@ bool Player::validatePosition(int row, char col, std::string direction, int size
 	bool isValid = false;
 	int colnum = colToInt(col);
 	if(direction=="H"){
-	for(int i=0;i<size;i++){
-		if((colnum+i)<=10 && playerGrid[row][colnum+i]==0){
-			isValid = true;
-		}
-		else{
-			isValid = false;
+		for(int i=0;i<size;i++){
+			if((colnum+i)<=10 && playerGrid[row][colnum+i]==0){
+				isValid = true;
+			}
+			else{
+				isValid = false;
+			}
 		}
 	}
-}
 
 	//changed int i, to int j, cuz bug fixing. - andrew
 	if(direction=="V"){
