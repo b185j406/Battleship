@@ -138,6 +138,12 @@ void Executive::printPlayerTwoGrid(){
 }
 
 int Executive::isWinner(){
-	
+	if(playerOne.shipsRemaining() == 0) {
+		return(1);
+	} else if(playerTwo.shipsRemaining() == 0) {
+		return(2);
+	} else {
+		return(0);
+	}
 }
 
